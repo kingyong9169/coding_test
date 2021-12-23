@@ -12,9 +12,7 @@ function solution(N, road, K) { // 우선순위 큐
     dist[1] = 0;
     
     while(pq.length !== 0){
-        const front = pq.pop();
-        const currentNode = front[0];
-        const currentTime = front[1];
+        const [currentNode, currentTime] = pq.pop();
         
         if(dist[currentNode] < currentTime) continue;
         for(const adjNode of adj[currentNode]){
