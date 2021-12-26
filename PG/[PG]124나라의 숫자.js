@@ -22,3 +22,11 @@ function solution(n) { // 처음 내 풀이
     
     return Number(n) + '';
 }
+
+function solution(n){ // 다른 사람 풀이
+    return change124(n);
+}
+
+function change124(n) {
+    return n === 0 ? '' : change124(parseInt((n - 1) / 3)) + [4, 1, 2][n % 3];
+  }
