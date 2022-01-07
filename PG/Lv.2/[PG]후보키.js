@@ -19,7 +19,7 @@ function solution(relation) {
           }
       }
       
-      for(let j = 0 ; valid, j < relation.length ; j++){ // 유일성 검사
+      for(let j = 0 ; valid && j < relation.length ; j++){ // 유일성 검사
           let cur = "";
           for(let k = 0 ; k < result[i].length ; k++)
               cur += relation[j][result[i][k]];
