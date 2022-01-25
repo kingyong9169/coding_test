@@ -1,26 +1,20 @@
 function solution(maps) { // 내 풀이
     const m = maps.length - 1, n = maps[0].length - 1;
+    const dx = [1, 0, -1, 0];
+    const dy = [0, 1, 0, -1];
     const queue = [[0, 0, 1]];
     
     while(queue.length > 0){
         const [x, y, count] = queue.shift();
         if(x === m && y === n) return count;
         
-        if(y + 1 <= n && maps[x][y + 1] === 1){
-            queue.push([x, y + 1, count + 1]);
-            maps[x][y + 1] = 0;
-        }
-        if(y - 1 >= 0 && maps[x][y - 1] === 1){
-            queue.push([x, y - 1, count + 1]);
-            maps[x][y - 1] = 0;
-        }
-        if(x + 1 <= m && maps[x + 1][y] === 1){
-            queue.push([x + 1, y, count + 1]);
-            maps[x + 1][y] = 0;
-        }
-        if(x - 1 >= 0 && maps[x - 1][y] === 1){
-            queue.push([x - 1, y, count + 1]);
-            maps[x - 1][y] = 0;
+        for(let k = 0; k < 4; k++) {
+            const nextX = x + dx[k];
+            const nextY = y + dy[k];
+            if(nextX >= 0 && nextY >= 0 && nextX <= m && nextY <= n && maps[nextX][nextY] === 1){
+                maps[nextX][nextY] = 0;
+                queue.push([nextX, nextY, count + 1]);
+            }
         }
     }
     return -1;

@@ -35,7 +35,7 @@ function solution(num, arr){ // 반복문 풀이
     pq.push(1);
     
     while(pq.length){
-        const vertex = pq.pop();
+        const vertex = pq.shift();
         graph[vertex].forEach((edge) => {
             if(!visited[edge]){
                 visited[edge] = true;
@@ -46,8 +46,9 @@ function solution(num, arr){ // 반복문 풀이
     console.log(visited.filter((x) => x ).length - 1);
 }
 
-let input = require('fs').readFileSync('BOJ/2606/2606.txt').toString().trim().split('\n');
-const num = [parseInt(input[0]), parseInt(input[1])];
+const filePath = process.platform === 'linux'? '/dev/stdin' : 'BOJ/2606/2606.txt';
+let input = require('fs').readFileSync(filePath).toString().trim().split('\n');
+const num = [+(input[0]), +(input[1])];;
 const arr = [];
 
 for(let i = 2 ; i < input.length ; i++) arr.push(input[i].split(' ').map((v) => parseInt(v)));

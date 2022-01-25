@@ -12,7 +12,8 @@ function dp(left, right, index) {
     return cache[left][right][index] = Math.min(score(right, next) + dp(left, next, index + 1), score(left, next) + dp(next, right, index + 1));
 }
 
-const input = require('fs').readFileSync('BOJ/2342/2342.txt').toString().trim().split(' ').map((x) => parseInt(x));
+const filePath = process.platform === 'linux'? '/dev/stdin' : 'BOJ/2342/2342.txt';
+const input = require('fs').readFileSync(filePath).toString().trim().split(' ').map((x) => parseInt(x));
 const cache = Array.from({length : 5}, () => Array.from({length : 5}, () => new Array(input.length)));
 
 console.log(dp(0, 0, 0)); // 세 번째 인자에 arr을 넣으면 버그 발생

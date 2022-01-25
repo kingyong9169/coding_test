@@ -7,7 +7,8 @@ function solution(houses){
     console.log(Math.min(...houses[houses.length - 1]));
 }
 
-const input = require('fs').readFileSync('BOJ/1149/1149.txt').toString().trim().split('\n');
-const houses = input.slice(1).map((x) => x.split(" ").map((v) => parseInt(v)));
+const filePath = process.platform === 'linux'? '/dev/stdin' : 'BOJ/1149/1149.txt';
+const input = require('fs').readFileSync(filePath).toString().trim().split('\n');
+const houses = input.slice(1).map((x) => x.split(" ").map((v) => +v));
 
 solution(houses);
