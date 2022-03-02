@@ -1,0 +1,4 @@
+SELECT STAGE, ROUND(AVG(STUDENT_NUM), 0) '평균 학생 수', ROUND(SUM(STUDENT)/SUM(TEACHER_NUM), 1) '선생님 1명당 평균 학생 수'
+FROM SCHOOLS
+GROUP BY STAGE
+ORDER BY '평균 학생 수' DESC, '선생님 1명당 평균 학생 수' ASC;
