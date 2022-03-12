@@ -1,15 +1,15 @@
 const Heap = require("./heap");
 
 class MaxHeap extends Heap {
-    bubbleUp(){
+    bubbleUp() {
         let index = this.items.length - 1;
-        while(this.parent(index) && this.parent(index) < this.items[index]){
+        while(this.parent(index) && this.parent(index) < this.items[index]) {
             this.swap(index, this.parentIndex(index));
             index = this.parentIndex(index);
         }
     }
 
-    bubbleDown(){
+    bubbleDown() {
         let index = 0;
         while(this.leftChild(index) && this.leftChild(index) > this.items[index] || 
             this.rightChild(index) && this.rightChild(index) > this.items[index]) {
